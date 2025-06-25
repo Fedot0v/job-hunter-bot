@@ -1,8 +1,11 @@
 import asyncio
+
 from workua_parser import WorkUaParser
+from db.create_db import create_all
 
 
 async def main():
+    await create_all()
     parser = WorkUaParser(keyword="python")
     jobs = await parser.fetch_vacancies()
     for job in jobs:
